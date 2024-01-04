@@ -67,6 +67,12 @@ namespace WpfApp1
                     rotate.RotateImage(NewPath, OutPath, RotateFlipType.Rotate90FlipNone);
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception)
@@ -102,6 +108,12 @@ namespace WpfApp1
                     bw.Create(NewPath, OutPath, colorMatrix);
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception)
@@ -137,6 +149,12 @@ namespace WpfApp1
                     light.Create(NewPath, OutPath, colorMatrix);
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception)
@@ -171,6 +189,12 @@ namespace WpfApp1
                     Dark.Create(NewPath, OutPath, colorMatrix);
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -207,6 +231,12 @@ namespace WpfApp1
 
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -242,6 +272,12 @@ namespace WpfApp1
 
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -276,6 +312,12 @@ namespace WpfApp1
                     Pink.Create(NewPath, OutPath, colorMatrix);
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
@@ -321,6 +363,12 @@ namespace WpfApp1
                     crop.CropImage(NewPath, OutPath, x, y);
 
                     IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                     FON.Visibility= Visibility.Hidden;
                     LABEL.Visibility= Visibility.Hidden;
                     SHIRINA.Visibility= Visibility.Hidden;
@@ -365,6 +413,12 @@ namespace WpfApp1
                         collage.Collage(Input1, Input2, OutPath);
 
                         IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                        if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                        {
+                            MainWindow mainw = new MainWindow();
+                            mainw.Show();
+                            this.Close();
+                        }
                     }
                 }
             }
@@ -414,6 +468,12 @@ namespace WpfApp1
                     BUTTON.Visibility = Visibility.Hidden;
                     POSITION.Visibility = Visibility.Hidden;
                     TEXT.Visibility = Visibility.Hidden;
+                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    {
+                        MainWindow mainw = new MainWindow();
+                        mainw.Show();
+                        this.Close();
+                    }
                 }
             }
             catch (Exception ex)
