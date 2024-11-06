@@ -30,3 +30,51 @@ C:\Users\parra\Desktop\lab3\WpfApp1\WpfApp1\obj\Debug\WpfApp1.g.resources
 C:\Users\parra\Desktop\lab3\WpfApp1\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
 C:\Users\parra\Desktop\lab3\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
 C:\Users\parra\Desktop\lab3\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\App.g.cs
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\parra\Desktop\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\App.g.cs
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\Оля\Downloads\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe.config
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.exe
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\bin\Debug\WpfApp1.pdb
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.AssemblyReference.cache
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.SuggestedBindingRedirects.cache
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\MainWindow.g.cs
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\App.g.cs
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.cache
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1_MarkupCompile.lref
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\MainWindow.baml
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.g.resources
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.Properties.Resources.resources
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.GenerateResource.cache
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.csproj.CoreCompileInputs.cache
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.exe
+C:\Users\parra\Desktop\PhotoEditor (2)\PhotoEditor\PhotoEditor\WpfApp1\WpfApp1\obj\Debug\WpfApp1.pdb

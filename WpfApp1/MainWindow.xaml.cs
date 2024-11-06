@@ -6,6 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Drawing.Imaging;
+using System.Drawing;
 using System.Windows.Controls;
 using System.Windows.Data;
 using System.Windows.Documents;
@@ -13,31 +15,62 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
-using System.Drawing;
-using System.Drawing.Imaging;
+using System.Windows.Interop;
+using Microsoft.SqlServer.Server;
+using static System.Net.Mime.MediaTypeNames;
+using Application = System.Windows.Application;
+using Point = System.Windows.Point;
+using Size = System.Windows.Size;
 
 namespace WpfApp1
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    
+
     public partial class MainWindow : Window
     {
+
+        Bitmap newBitMap;
 
         public MainWindow()
         {
             InitializeComponent();
+            this.newBitMap = null;
+        }
+
+
+        public static BitmapImage ToBitmapImage(Bitmap bitmap)
+        {
+            using (var memory = new MemoryStream())
+            {
+                bitmap.Save(memory, ImageFormat.Png);
+                memory.Position = 0;
+
+                var bitmapImage = new BitmapImage();
+                bitmapImage.BeginInit();
+                bitmapImage.StreamSource = memory;
+                bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                bitmapImage.EndInit();
+                bitmapImage.Freeze();
+
+                return bitmapImage;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+
+
             OpenFileDialog openFileDialog = new OpenFileDialog();
 
             if (openFileDialog.ShowDialog() == true)
             {
-                IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
+                newBitMap = new Bitmap(openFileDialog.FileName);
+
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+
+                IMAGE.Source = newBitmapImage;
             }
 
         }
@@ -46,38 +79,14 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                    Rotate rotate = new Rotate(NewPath, OutPath, RotateFlipType.Rotate90FlipNone);
-                    rotate.RotateImage(NewPath, OutPath, RotateFlipType.Rotate90FlipNone);
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                Rotate rotate = new Rotate(newBitMap, RotateFlipType.Rotate90FlipNone);
+                rotate.RotateImage(newBitMap, RotateFlipType.Rotate90FlipNone);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!");
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
 
         }
@@ -86,80 +95,31 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-                    ColorMatrix colorMatrix = new ColorMatrix();
-
-                    BlackAndWhiteFilter bw = new BlackAndWhiteFilter(NewPath, OutPath, colorMatrix);
-                    bw.Create(NewPath, OutPath, colorMatrix);
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                ColorMatrix colorMatrix = new ColorMatrix();
+                BlackAndWhiteFilter bw = new BlackAndWhiteFilter(newBitMap, colorMatrix);
+                bw.Create(newBitMap, colorMatrix);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!");
-            }            
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
+            }
         }
 
         private void Button_Click_3(object sender, RoutedEventArgs e)
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-                    
-
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    LightFilter light = new LightFilter(NewPath, OutPath, colorMatrix);
-                    light.Create(NewPath, OutPath, colorMatrix);
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                ColorMatrix colorMatrix = new ColorMatrix();
+                LightFilter light = new LightFilter(newBitMap, colorMatrix);
+                light.Create(newBitMap, colorMatrix);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!");
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
         }
 
@@ -167,35 +127,11 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                    ColorMatrix colorMatrix = new ColorMatrix();
-                    DarkFilter Dark = new DarkFilter(NewPath, OutPath, colorMatrix);
-                    Dark.Create(NewPath, OutPath, colorMatrix);
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                ColorMatrix colorMatrix = new ColorMatrix();
+                DarkFilter Dark = new DarkFilter(newBitMap, colorMatrix);
+                Dark.Create(newBitMap, colorMatrix);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
             catch (Exception ex)
             {
@@ -207,37 +143,11 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                    
-                    ColorMatrix colorMatrix= new ColorMatrix();
-                    BlueFilter bluefilter = new BlueFilter(NewPath, OutPath, colorMatrix);
-                    bluefilter.Create(NewPath, OutPath, colorMatrix);
-
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                ColorMatrix colorMatrix = new ColorMatrix();
+                BlueFilter bluefilter = new BlueFilter(newBitMap, colorMatrix);
+                bluefilter.Create(newBitMap, colorMatrix);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
             catch (Exception ex)
             {
@@ -249,36 +159,11 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                    ColorMatrix colorMatrix= new ColorMatrix();
-                    GreenFilter Green = new GreenFilter(NewPath, OutPath, colorMatrix);
-                    Green.Create(NewPath, OutPath, colorMatrix);
-
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                ColorMatrix colorMatrix = new ColorMatrix();
+                GreenFilter Green = new GreenFilter(newBitMap, colorMatrix);
+                Green.Create(newBitMap, colorMatrix);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
             catch (Exception ex)
             {
@@ -290,91 +175,66 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                    ColorMatrix colorMatrix= new ColorMatrix();
-                    PinkFilter Pink = new PinkFilter(NewPath, OutPath, colorMatrix);
-                    Pink.Create(NewPath, OutPath, colorMatrix);
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                ColorMatrix colorMatrix = new ColorMatrix();
+                PinkFilter Pink = new PinkFilter(newBitMap, colorMatrix);
+                Pink.Create(newBitMap, colorMatrix);
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
-            
+
         }
 
         private void Button_Click_8(object sender, RoutedEventArgs e)
         {
-            FON.Visibility= Visibility.Visible;
-            LABEL.Visibility= Visibility.Visible;
-            SHIRINA.Visibility= Visibility.Visible;
-            VISOTA.Visibility= Visibility.Visible;
-            KNOPKA.Visibility= Visibility.Visible;
+            FON.Visibility = Visibility.Visible;
+            LABEL.Visibility = Visibility.Visible;
+            SHIRINA.Visibility = Visibility.Visible;
+            VISOTA.Visibility = Visibility.Visible;
+            KNOPKA.Visibility = Visibility.Visible;
         }
 
         private void KNOPKA_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                string NewPath = "";
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
+                if (newBitMap == null) throw new ArgumentException("Изображение не загружено");
+                else
                 {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
-
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
                     int x = Convert.ToInt32(SHIRINA.Text.ToString());
                     int y = Convert.ToInt32(VISOTA.Text.ToString());
+                    Crop crop = new Crop(newBitMap, x, y);
 
-                    Crop crop = new Crop(NewPath, OutPath, x, y);
-                    crop.CropImage(NewPath, OutPath, x, y);
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                    if (x > newBitMap.Width || y > newBitMap.Height || x < 100 || y < 100)
                     {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
+                        throw new ArgumentException("Неверный формат ввода");
                     }
-                    FON.Visibility= Visibility.Hidden;
-                    LABEL.Visibility= Visibility.Hidden;
-                    SHIRINA.Visibility= Visibility.Hidden;
-                    VISOTA.Visibility= Visibility.Hidden;
-                    KNOPKA.Visibility= Visibility.Hidden;
+                    else
+                    {
+                        Rectangle cropArea = new Rectangle(0, 0, x, y);
+                        Bitmap croppedImage = new Bitmap(newBitMap);
+                        newBitMap = new Bitmap(cropArea.Width, cropArea.Height);
+                        using (Graphics graphics = Graphics.FromImage(newBitMap))
+                        {
+                            graphics.DrawImage(croppedImage, new Rectangle(0, 0, cropArea.Width, cropArea.Height), cropArea, GraphicsUnit.Pixel);
+                        }
+                    }
+
+
+                    BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+
+                    IMAGE.Source = newBitmapImage;
+
+                    FON.Visibility = Visibility.Hidden;
+                    LABEL.Visibility = Visibility.Hidden;
+                    SHIRINA.Visibility = Visibility.Hidden;
+                    VISOTA.Visibility = Visibility.Hidden;
+                    KNOPKA.Visibility = Visibility.Hidden;
                 }
+                
             }
             catch (Exception ex)
             {
@@ -386,45 +246,38 @@ namespace WpfApp1
         {
             try
             {
-                string Input1 = "";
-                string link = IMAGE.Source.ToString();
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        Input1 += IMAGE.Source.ToString()[i];
-                    }
-                }
-
                 if (MessageBox.Show("Выберите второе изображение для коллажа") == MessageBoxResult.OK)
                 {
                     OpenFileDialog openFileDialog1 = new OpenFileDialog();
 
                     string Input2 = "";
                     if (openFileDialog1.ShowDialog() == true) Input2 = openFileDialog1.FileName;
-                    if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
+                    Bitmap bitmap2 = new Bitmap(Input2);
+
+                    Collages collage = new Collages(newBitMap, Input2);
+                    collage.Collage(newBitMap, Input2);
+
+                    using (Bitmap image2 = new Bitmap(Input2))
                     {
-                        OpenFileDialog openFileDialog = new OpenFileDialog();
-
-                        string OutPath = "";
-                        if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                        Collages collage = new Collages(Input1, Input2, OutPath);
-                        collage.Collage(Input1, Input2, OutPath);
-
-                        IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                        if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
+                        Bitmap cImage = new Bitmap(newBitMap);
+                        int NewWidth = Math.Max(newBitMap.Width, image2.Width);
+                        int NewHeight = Math.Max(newBitMap.Height, image2.Height);
+                        newBitMap = new Bitmap(NewWidth * 2, NewHeight);
+                        using (Graphics g = Graphics.FromImage(newBitMap))
                         {
-                            MainWindow mainw = new MainWindow();
-                            mainw.Show();
-                            this.Close();
+                            g.DrawImage(cImage, new Rectangle(0, 0, cImage.Width, cImage.Height));
+                            g.DrawImage(image2, new Rectangle(cImage.Width, 0, NewWidth, NewHeight));
                         }
                     }
+
+                    BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+
+                    IMAGE.Source = newBitmapImage;
                 }
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                MessageBox.Show("Ошибка!");
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
         }
 
@@ -442,39 +295,18 @@ namespace WpfApp1
         {
             try
             {
-                string NewPath = "";
-                for (int i = 0; i < IMAGE.Source.ToString().Length; i++)
-                {
-                    if (i >= 8)
-                    {
-                        NewPath += IMAGE.Source.ToString()[i];
-                    }
-                }
+                Inscription inscription = new Inscription(newBitMap, TEXT.Text.ToString(), POSITION.Text.ToString());
+                inscription.Add(newBitMap, TEXT.Text.ToString(), POSITION.Text.ToString());
 
-                if (MessageBox.Show("Выберите файл для сохранения") == MessageBoxResult.OK)
-                {
-                    OpenFileDialog openFileDialog = new OpenFileDialog();
+                BitmapImage newBitmapImage = ToBitmapImage(newBitMap);
+                IMAGE.Source = newBitmapImage;
 
-                    string OutPath = "";
-                    if (openFileDialog.ShowDialog() == true) OutPath = openFileDialog.FileName;
-
-                    Inscription inscription = new Inscription(NewPath, OutPath, TEXT.Text.ToString(), POSITION.Text.ToString());
-                    inscription.Add(NewPath, OutPath, TEXT.Text.ToString(), POSITION.Text.ToString());
-
-                    IMAGE.Source = new BitmapImage(new Uri(openFileDialog.FileName));
-                    FON.Visibility = Visibility.Hidden;
-                    LABEL2.Visibility = Visibility.Hidden;
-                    LABEL3.Visibility = Visibility.Hidden;
-                    BUTTON.Visibility = Visibility.Hidden;
-                    POSITION.Visibility = Visibility.Hidden;
-                    TEXT.Visibility = Visibility.Hidden;
-                    if (MessageBox.Show("Сохранено!") == MessageBoxResult.OK)
-                    {
-                        MainWindow mainw = new MainWindow();
-                        mainw.Show();
-                        this.Close();
-                    }
-                }
+                FON.Visibility = Visibility.Hidden;
+                LABEL2.Visibility = Visibility.Hidden;
+                LABEL3.Visibility = Visibility.Hidden;
+                BUTTON.Visibility = Visibility.Hidden;
+                POSITION.Visibility = Visibility.Hidden;
+                TEXT.Visibility = Visibility.Hidden;
             }
             catch (Exception ex)
             {
@@ -486,5 +318,24 @@ namespace WpfApp1
         {
             System.Windows.Application.Current.Shutdown();
         }
+
+        private void Button_Click_13(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog save = new SaveFileDialog
+            {
+                Filter = "JPG Files (*.jpg)|*.jpg"
+            };
+            if (save.ShowDialog() == true)
+            {
+                JpegBitmapEncoder jpegBitmapEncoder = new JpegBitmapEncoder();
+                jpegBitmapEncoder.Frames.Add(BitmapFrame.Create(IMAGE.Source as BitmapSource));
+                using (FileStream fileStream = new FileStream(save.FileName, FileMode.Create))
+                    jpegBitmapEncoder.Save(fileStream);
+                MessageBox.Show("Изображение успешно сохранено.");
+            }
+          
+           
+            }
+        }
     }
-}
+

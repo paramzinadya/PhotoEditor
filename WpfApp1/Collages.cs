@@ -11,28 +11,25 @@ namespace WpfApp1
     public class Collages : Commands
     {
         public string input2 { get; }
-        public void Collage(string input, string input2, string output)
+        public void Collage(Bitmap newBitMap, string input2)
         {
+            if (newBitMap == null) throw new ArgumentException("Изображение не загружено");
+            if (input2 == null) throw new ArgumentException("Второе изображение не загружено");
 
-            using (Bitmap image1 = new Bitmap(input))
             using (Bitmap image2 = new Bitmap(input2))
             {
-                int NewWidth = Math.Max(image1.Width, image2.Width);
-                int NewHeight = Math.Max(image1.Height, image2.Height);
-                using (Bitmap collage = new Bitmap(NewWidth * 2, NewHeight))
+                int NewWidth = Math.Max(newBitMap.Width, image2.Width);
+                int NewHeight = Math.Max(newBitMap.Height, image2.Height);
+                newBitMap = new Bitmap(NewWidth * 2, NewHeight);
+                using (Graphics g = Graphics.FromImage(newBitMap))
                 {
-                    using (Graphics g = Graphics.FromImage(collage))
-                    {
-                        g.DrawImage(image1, new Rectangle(0, 0, image1.Width, image1.Height));
-                        g.DrawImage(image2, new Rectangle(image1.Width, 0, NewWidth, NewHeight));
-                    }
-                    collage.Save(output, ImageFormat.Jpeg);
+                    g.DrawImage(newBitMap, new Rectangle(0, 0, newBitMap.Width, newBitMap.Height));
+                    g.DrawImage(image2, new Rectangle(newBitMap.Width, 0, NewWidth, NewHeight));
                 }
-                
             }
         }
 
-        public Collages(string input, string input2, string output) : base(input, output)
+        public Collages(Bitmap newBitMap, string input2) : base(newBitMap)
         {
             this.input2 = input2;
         }

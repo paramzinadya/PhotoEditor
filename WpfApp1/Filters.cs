@@ -10,27 +10,21 @@ namespace WpfApp1
 {
     public class Filters
     {
-        public string input { get; }
-        public string output { get; }
+        public Bitmap newBitMap;
 
-        public virtual void Create(string Input, string Output, ColorMatrix colorMatrix)
+        public virtual void Create(Bitmap newBitMap, ColorMatrix colorMatrix)
         {
-            using (Bitmap InputImage = new Bitmap(Input))
+            using (Graphics graphics = Graphics.FromImage(newBitMap))
             {
-                using (Graphics graphics = Graphics.FromImage(InputImage))
-                {
-                    ImageAttributes imageattributes = new ImageAttributes();
-                    imageattributes.SetColorMatrix(colorMatrix);
-                    graphics.DrawImage(InputImage, new Rectangle(0, 0, InputImage.Width, InputImage.Height), 0, 0, InputImage.Width, InputImage.Height, GraphicsUnit.Pixel, imageattributes);
-                }
-                InputImage.Save(Output, ImageFormat.Jpeg);
-            }
+                ImageAttributes imageattributes = new ImageAttributes();
+                imageattributes.SetColorMatrix(colorMatrix);
+                graphics.DrawImage(newBitMap, new Rectangle(0, 0, newBitMap.Width, newBitMap.Height), 0, 0, newBitMap.Width, newBitMap.Height, GraphicsUnit.Pixel, imageattributes);
+            }           
         }
 
-        public Filters(string input, string output)
+        public Filters(Bitmap newBitMap)
         {
-            this.input=input;
-            this.output=output;
+            this.newBitMap=newBitMap;
         }
     }
 }

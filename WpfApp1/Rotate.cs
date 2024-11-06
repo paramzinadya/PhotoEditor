@@ -7,22 +7,20 @@ using System.Threading.Tasks;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Windows;
+using System.Windows.Media.Imaging;
 
 namespace WpfApp1
 {
     internal class Rotate : Commands
     {
         public RotateFlipType rotateFlipType { get; }
-        public void RotateImage(string input, string output, RotateFlipType rotateFlipType)
+        public void RotateImage(Bitmap newBitMap, RotateFlipType rotateFlipType)
         {
-            using (Bitmap originalImage = new Bitmap(input))
-            {
-                originalImage.RotateFlip(rotateFlipType);
-                originalImage.Save(output, ImageFormat.Jpeg);
-            }
+            if (newBitMap == null) throw new ArgumentException("Изображение не загружено");
+            newBitMap.RotateFlip(rotateFlipType);
         }
 
-        public Rotate(string input, string output, RotateFlipType rotateFlipType) : base(input, output)
+        public Rotate(Bitmap newBitMap, RotateFlipType rotateFlipType) : base(newBitMap)
         {
             this.rotateFlipType= rotateFlipType;
         }

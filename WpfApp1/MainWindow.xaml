@@ -65,7 +65,7 @@
     </Window.Resources>
     <Grid>
         <Image x:Name="IMAGE" HorizontalAlignment="Left" Height="274" Margin="91,33,0,0" VerticalAlignment="Top" Width="292"/>
-        <Button Content="ЗАГРУЗИТЬ ФОТО" HorizontalAlignment="Left" Margin="68,339,0,0" VerticalAlignment="Top" Height="55" Width="149" Click="Button_Click" Background="#FFE0AFFF" FontFamily="Arial" FontSize="14"/>
+        <Button Content="ЗАГРУЗИТЬ ФОТО" HorizontalAlignment="Right" Margin="0,334,637,0" VerticalAlignment="Top" Height="55" Width="145" Click="Button_Click" Background="#FFE0AFFF" FontFamily="Arial" FontSize="14"/>
         <Button Content="ПОВОРОТ" HorizontalAlignment="Left" Margin="627,14,0,0" VerticalAlignment="Top" Height="55" Width="149" Click="Button_Click_1" Background="#FFB5C8FE" FontFamily="Arial" FontSize="14"/>
         <Button Content="ФИЛЬТР ЧБ" HorizontalAlignment="Left" Margin="467,175,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFB5C8FE" Click="Button_Click_2" FontFamily="Arial" FontSize="14" RenderTransformOrigin="0.537,0.501"/>
         <Label Content="ФИЛЬТРЫ" HorizontalAlignment="Left" Margin="568,143,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="16"/>
@@ -76,7 +76,7 @@
         <Button Content="СДЕЛАТЬ КОЛЛАЖ" HorizontalAlignment="Left" Margin="627,79,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFB5C8FE" FontFamily="Arial" FontSize="14" Click="Button_Click_9"/>
         <Button Content="ДОБАВИТЬ НАДПИСЬ" HorizontalAlignment="Left" Margin="467,79,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFB5C8FE" FontFamily="Arial" RenderTransformOrigin="0.52,-0.181" Click="Button_Click_10"/>
         <Button Content="ОБРЕЗАТЬ" HorizontalAlignment="Left" Margin="467,14,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFB5C8FE" FontFamily="Arial" FontSize="14" Click="Button_Click_8"/>
-        <Button Content="ВЫХОД" HorizontalAlignment="Left" Margin="236,340,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFE0AFFF" FontFamily="Arial" FontSize="14" Click="Button_Click_12"/>
+        <Button Content="ВЫХОД" HorizontalAlignment="Left" Margin="163,336,0,0" VerticalAlignment="Top" Height="55" Width="140" Background="#FFE0AFFF" FontFamily="Arial" FontSize="14" Click="Button_Click_12"/>
         <Button Content="ЗЕЛЕНЫЙ ФИЛЬТР" HorizontalAlignment="Left" Margin="627,241,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFB5C8FE" Click="Button_Click_6" FontFamily="Arial" FontSize="14"/>
         <Button Content="РОЗОВЫЙ ФИЛЬТР" HorizontalAlignment="Left" Margin="467,241,0,0" VerticalAlignment="Top" Height="55" Width="149" Background="#FFB5C8FE" Click="Button_Click_7" FontFamily="Arial" FontSize="14"/>
         <Rectangle x:Name="FON" HorizontalAlignment="Left" Height="158" Margin="459,150,0,0" VerticalAlignment="Top" Width="322" Fill="White"  Visibility="Hidden"/>
@@ -99,6 +99,7 @@
             <ComboBoxItem Content="СНИЗУ"></ComboBoxItem>
         </ComboBox>
         <Label x:Name="LABEL3" Content="ВВЕДИТЕ ТЕКСТ" HorizontalAlignment="Left" Margin="555,203,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14"  Visibility="Hidden"/>
+        <Button Content="СОХРАНИТЬ КАК" HorizontalAlignment="Left" Margin="318,335,0,0" VerticalAlignment="Top"  Height="55" Width="138" Background="#FFE0AFFF" FontFamily="Arial" FontSize="14" Click="Button_Click_13"/>
 
     </Grid>
 </Window>
